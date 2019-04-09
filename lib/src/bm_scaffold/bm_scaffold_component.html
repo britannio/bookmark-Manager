@@ -1,0 +1,22 @@
+<nav class='navbar'>
+    <a href="#" class="navbar-brand">Bookmark Manager</a>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12" *ngIf="bookmarks.isEmpty">
+            <div class="alert text-center">No bookmarks added.</div>
+        </div>
+        <div class="col-md-4 mb-3" *ngFor="let bookmark of bookmarks; let $i = index">
+            <div class="card">
+                <div class="card-body">
+                    <!-- String Interpolation -->
+                    <h5 class="card-title">{{bookmark['title']}}</h5>
+                    <p class="card-text">{{bookmark['description']}}</p>
+                    <!-- Attribute Binding -->
+                    <a [href]="bookmark['url']" class="btn btn-primary">Go to website</a>
+                    <button class="btn btn-danger" (click)="removeBookmark($i)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
